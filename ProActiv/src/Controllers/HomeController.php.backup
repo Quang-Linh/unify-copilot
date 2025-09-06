@@ -1,0 +1,119 @@
+<?php
+/**
+ * Contrôleur d'accueil ProActiv
+ * Gère la page d'accueil et les pages d'information
+ */
+
+require_once 'BaseController.php';
+
+class HomeController extends BaseController
+{
+    /**
+     * Page d'accueil
+     */
+    public function index(Request $request)
+    {
+        // Statistiques pour la page d'accueil
+        $stats = $this->getStats();
+        
+        // Derniers articles du forum
+        $latestTopics = $this->getLatestForumTopics();
+        
+        // Témoignages
+        $testimonials = $this->getTestimonials();
+        
+        $this->render('home/index', [
+            'title' => 'Accueil - Plateforme Auto-Entrepreneur',
+            'stats' => $stats,
+            'latest_topics' => $latestTopics,
+            'testimonials' => $testimonials,
+            'flash_messages' => $this->getFlashMessages()
+        ]);
+    }
+    
+    /**
+     * Récupère les statistiques de la plateforme
+     */
+    private function getStats()
+    {
+        try {
+            // Nombre d'utilisateurs actifs
+            $stmt = $this->db->query("SELECT COUNT(*) as count FROM users WHERE active = 1");
+            $usersCount = $stmt->fetch()['count'];
+            
+            // Nombre de documents générés
+            $stmt = $this->db->query("SELECT COUNT(*) as count FROM documents");
+            $documentsCount = $stmt->fetch()['count'];
+            
+            // Nombre de posts du forum
+            $stmt = $this->db->query("SELECT COUNT(*) as count FROM forum_posts");
+            $postsCount = $stmt->fetch()['count'];
+            
+            return [
+                'users' => $usersCount,
+                'documents' => $documentsCount,
+                'posts' => $postsCount,
+                'calculators' => 5 // Nombre fixe de calculateurs disponibles
+            ];
+            
+        } catch (Exception $e) {
+            // En cas d'erreur, retourne des stats par défaut
+            return [
+                'users' => 0,
+                'documents' => 0,
+                'posts' => 0,
+                'calculators' => 5
+            ];
+        }
+    }
+    
+    /**
+     * Récupère les derniers sujets du forum
+     */
+    private function getLatestForumTopics()
+    {
+        try {
+            $stmt = $this->db->prepare("
+                SELECT ft.id, ft.title, ft.created_at, u.firstname, u.lastname, fc.name as category_name
+                FROM forum_topics ft
+                JOIN users u ON ft.user_id = u.id
+                JOIN forum_categories fc ON ft.category_id = fc.id
+                WHERE ft.active = 1
+                ORDER BY ft.created_at DESC
+                LIMIT 5
+            ");
+            $stmt->execute();
+            return $stmt->fetchAll();
+            
+        } catch (Exception $e) {
+            return [];
+        }
+    }
+    
+    /**
+     * Récupère les témoignages
+     */
+    private function getTestimonials()
+    {
+        return [
+            [
+                'name' => 'Marie Dubois',
+                'profession' => 'Graphiste freelance',
+                'text' => 'ProActiv m\'a fait gagner un temps précieux dans la gestion de mon statut auto-entrepreneur. Les calculateurs sont très pratiques !',
+                'rating' => 5
+            ],
+            [
+                'name' => 'Pierre Martin',
+                'profession' => 'Consultant IT',
+                'text' => 'Excellent outil pour suivre mes charges et générer mes documents. L\'interface est intuitive et le support communautaire très actif.',
+                'rating' => 5
+            ],
+            [
+                'name' => 'Sophie Leroy',
+                'profession' => 'Coach sportif',
+                'text' => 'Grâce à ProActiv, je maîtrise enfin ma comptabilité d\'auto-entrepreneur. Les calculateurs m\'aident à fixer mes tarifs correctement.',
+                'rating' => 4
+            ]
+        ];
+    }
+}

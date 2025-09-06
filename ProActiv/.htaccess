@@ -1,0 +1,11 @@
+# Configuration Apache pour ProActiv - Version simple
+RewriteEngine On
+
+# Redirection vers public/ pour les fichiers non existants
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} !^/public/
+RewriteRule ^(.*)$ public/$1 [L]
+
+# Bloquer l'accès aux dossiers sensibles
+RewriteRule ^(config|src|storage|database)/ - [F,L]

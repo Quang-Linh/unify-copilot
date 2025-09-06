@@ -1,0 +1,20 @@
+[06-Sep-2025 01:22:02 Europe/Paris] ProActiv Error: Router::addRoute(): Argument #4 ($middleware) must be of type array, string given, called in /home/ngqu0806/public_html/ProActiv/src/Router.php on line 88 in /home/ngqu0806/public_html/ProActiv/src/Router.php:125
+[06-Sep-2025 08:56:45 Europe/Paris] ProActiv Error: Erreur de connexion base de données: SQLSTATE[HY000] [1045] Access denied for user ''@'localhost' (using password: YES) in /home/ngqu0806/public_html/ProActiv/src/Application.php:77
+[06-Sep-2025 09:26:53 Europe/Paris] ProActiv Error: Contrôleur non trouvé: HomeController in /home/ngqu0806/public_html/ProActiv/src/Router.php:260
+[06-Sep-2025 09:30:16 Europe/Paris] Erreur récupération stats: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'ngqu0806_proactiv.calculations' doesn't exist
+[06-Sep-2025 09:30:16 Europe/Paris] Erreur récupération topics: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'u.username' in 'SELECT'
+[06-Sep-2025 09:30:16 Europe/Paris] ProActiv Error: Class "Comment" not found in /home/ngqu0806/public_html/ProActiv/src/Controllers/CommentController.php:8
+[06-Sep-2025 09:41:26 Europe/Paris] Erreur récupération stats: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'ngqu0806_proactiv.calculations' doesn't exist
+[06-Sep-2025 09:41:26 Europe/Paris] Erreur récupération topics: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'u.username' in 'SELECT'
+[06-Sep-2025 09:41:26 Europe/Paris] ProActiv Error: Class "Comment" not found in /home/ngqu0806/public_html/ProActiv/src/Controllers/CommentController.php:8
+[06-Sep-2025 09:56:00 Europe/Paris] ProActiv Error: Call to undefined method LanguageService::get() in /home/ngqu0806/public_html/ProActiv/templates/comments/widget.php:7
+[06-Sep-2025 09:56:03 Europe/Paris] ProActiv Error: Call to undefined method LanguageService::get() in /home/ngqu0806/public_html/ProActiv/templates/comments/widget.php:7
+[06-Sep-2025 09:56:04 Europe/Paris] ProActiv Error: Call to undefined method LanguageService::get() in /home/ngqu0806/public_html/ProActiv/templates/comments/widget.php:7
+[06-Sep-2025 09:56:33 Europe/Paris] Erreur récupération stats: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'ngqu0806_proactiv.calculations' doesn't exist
+[06-Sep-2025 09:56:33 Europe/Paris] Erreur récupération topics: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'u.username' in 'SELECT'
+[06-Sep-2025 09:56:33 Europe/Paris] Erreur de connexion à la base de données: SQLSTATE[HY000] [1045] Access denied for user ''@'localhost' (using password: YES)
+[06-Sep-2025 09:56:33 Europe/Paris] ProActiv Error: Call to undefined method LanguageService::get() in /home/ngqu0806/public_html/ProActiv/templates/comments/widget.php:7
+[06-Sep-2025 10:33:30 Europe/Paris] Erreur récupération stats: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'ngqu0806_proactiv.calculations' doesn't exist
+[06-Sep-2025 10:33:30 Europe/Paris] Erreur récupération topics: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'u.username' in 'SELECT'
+[06-Sep-2025 10:33:30 Europe/Paris] Erreur de connexion à la base de données: SQLSTATE[HY000] [1045] Access denied for user ''@'localhost' (using password: YES)
+[06-Sep-2025 10:33:30 Europe/Paris] ProActiv Error: Call to undefined method LanguageService::get() in /home/ngqu0806/public_html/ProActiv/templates/comments/widget.php:7

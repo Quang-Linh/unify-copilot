@@ -1,0 +1,94 @@
+<?php
+/**
+ * Configuration principale de l'application ProActiv
+ * Optimisé pour hébergement mutualisé O2Switch
+ */
+
+return [
+    // Configuration de l'application
+    'app' => [
+        'name' => 'ProActiv',
+        'version' => '1.0.0',
+        'description' => 'Plateforme de gestion auto-entrepreneur',
+        'url' => 'https://linhstudio.click/ProActiv',
+        'timezone' => 'Europe/Paris',
+        'locale' => 'fr_FR.UTF-8',
+        'charset' => 'UTF-8',
+        
+        // Mode debug (à désactiver en production)
+        'debug' => false,
+        'maintenance' => false,
+        
+        // Chemins
+        'paths' => [
+            'root' => dirname(__DIR__),
+            'public' => dirname(__DIR__) . '/public',
+            'templates' => dirname(__DIR__) . '/templates',
+            'assets' => dirname(__DIR__) . '/assets',
+            'uploads' => dirname(__DIR__) . '/public/uploads',
+            'logs' => dirname(__DIR__) . '/storage/logs'
+        ]
+    ],
+    
+    // Configuration base de données O2Switch
+    'database' => [
+        'host' => 'localhost',
+        'port' => 3306,
+        'name' => 'kahu8902_proactiv',
+        'username' => 'kahu8902_proactiv', 
+        'password' => '01Petite-Ro!',
+        'charset' => 'utf8mb4',
+        'collation' => 'utf8mb4_unicode_ci',
+        'options' => [
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+            PDO::ATTR_EMULATE_PREPARES => false,
+            PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8mb4"
+        ]
+    ],
+    
+    // Configuration sécurité
+    'security' => [
+        'encryption_key' => 'votre-cle-secrete-256-bits-ici-changez-moi',
+        'session_name' => 'ProActiv_Session',
+        'session_lifetime' => 7200, // 2 heures
+        'csrf_protection' => true,
+        'password_min_length' => 8,
+        'max_login_attempts' => 5,
+        'lockout_duration' => 900 // 15 minutes
+    ],
+    
+    // Configuration email
+    'mail' => [
+        'from' => [
+            'email' => 'noreply@linhstudio.click',
+            'name' => 'ProActiv'
+        ],
+        'smtp' => [
+            'host' => 'mail.linhstudio.click',
+            'port' => 587,
+            'encryption' => 'tls',
+            'username' => '',
+            'password' => ''
+        ]
+    ],
+    
+    // Limites et quotas
+    'limits' => [
+        'upload_max_size' => '5M',
+        'max_documents_per_user' => 100,
+        'max_forum_posts_per_day' => 10,
+        'pagination_per_page' => 20
+    ],
+    
+    // Fonctionnalités activées
+    'features' => [
+        'user_registration' => true,
+        'email_verification' => true,
+        'forum' => true,
+        'document_generation' => true,
+        'calculators' => true,
+        'notifications' => true,
+        'api' => false
+    ]
+];

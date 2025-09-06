@@ -1,0 +1,19 @@
+RewriteEngine On
+
+# Redirection vers index.php pour toutes les routes
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php [QSA,L]
+
+# Sécurité de base
+<Files "*.php">
+    Order Allow,Deny
+    Allow from all
+</Files>
+
+# Interdire l'accès aux fichiers sensibles
+<FilesMatch "\.(htaccess|htpasswd|ini|log|sh|inc|bak)$">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
+
